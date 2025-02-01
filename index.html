@@ -1,19 +1,54 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXX');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="我的个人网站，托管在 Cloudflare Pages">
     <title>欢迎访问 | ab521.top</title>
     <link rel="stylesheet" href="style.css">
     <!-- Font Awesome 图标库 -->
+    <!--  Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    // 导航栏滚动隐藏/显示
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    if (currentScroll > lastScroll && currentScroll > 100) {
+        document.querySelector('nav').style.transform = 'translateY(-100%)';
+    } else {
+        document.querySelector('nav').style.transform = 'translateY(0)';
+    }
+    lastScroll = currentScroll;
+});
+    /* 修改移动端菜单激活状态 */
+.nav-links.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: rgba(255,255,255,0.95);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
     <!-- 导航栏 -->
     <nav>
         <div class="container">
             <a href="#" class="logo">ab521.top</a>
+            <button id="theme-toggle" class="theme-toggle">
+            <i class="fas fa-moon"></i>
+        </button>
             <ul class="nav-links">
                 <li><a href="#home">首页</a></li>
                 <li><a href="#about">关于</a></li>
@@ -26,7 +61,7 @@
     <!-- 首页内容 -->
     <section id="home" class="hero">
         <div class="container">
-            <h1>欢迎来到我的网站</h1>
+            <h1 class="animate__animated animate__fadeInDown">欢迎来到我的网站</h1>
             <p>这是通过 GitHub + Cloudflare Pages 托管的静态网站示例</p>
             <a href="#contact" class="cta-button">联系我</a>
         </div>
@@ -38,7 +73,7 @@
             <h2>关于我</h2>
             <p>一名开发者，热爱技术与分享。</p>
             <div class="skills">
-                <div class="skill-item">HTML/CSS</div>
+                <div class="skill-item animate__animated animate__flipInX">HTML/CSS</div>
                 <div class="skill-item">JavaScript</div>
                 <div class="skill-item">Cloudflare</div>
             </div>
@@ -49,6 +84,12 @@
     <section id="contact" class="section">
         <div class="container">
             <h2>联系我</h2>
+            <form class="contact-form" action="https://formspree.io/f/your-form-id" method="POST">
+            <input type="text" name="name" placeholder="您的姓名" required>
+            <input type="email" name="email" placeholder="您的邮箱" required>
+            <textarea name="message" placeholder="留言内容" rows="5" required></textarea>
+            <button type="submit">发送消息</button>
+        </form>
             <div class="social-links">
                 <a href="https://github.com/sun0703/" target="_blank"><i class="fab fa-github"></i></a>
                 <a href="mailto:123@ab521.top"><i class="fas fa-envelope"></i></a>
@@ -69,6 +110,18 @@
         document.querySelector('.mobile-menu').addEventListener('click', () => {
             document.querySelector('.nav-links').classList.toggle('active');
         });
+        // 暗黑模式切换
+const themeToggle = document.getElementById('theme-toggle');
+themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    // 保存用户偏好
+    localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+});
+
+// 初始化加载主题
+if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark-mode');
+}
     </script>
 </body>
 </html>
