@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="我的个人网站，托管在 Cloudflare Pages">
+    <title>欢迎访问 | abb521.top</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome 图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">abb521.top</a>
+            <ul class="nav-links">
+                <li><a href="#home">首页</a></li>
+                <li><a href="#about">关于</a></li>
+                <li><a href="#contact">联系</a></li>
+            </ul>
+            <i class="fas fa-bars mobile-menu"></i>
+        </div>
+    </nav>
+
+    <!-- 首页内容 -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>欢迎来到我的网站</h1>
+            <p>这是通过 GitHub + Cloudflare Pages 托管的静态网站示例</p>
+            <a href="#contact" class="cta-button">联系我</a>
+        </div>
+    </section>
+
+    <!-- 关于页面 -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2>关于我</h2>
+            <p>一名开发者，热爱技术与分享。</p>
+            <div class="skills">
+                <div class="skill-item">HTML/CSS</div>
+                <div class="skill-item">JavaScript</div>
+                <div class="skill-item">Cloudflare</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系页面 -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>联系我</h2>
+            <div class="social-links">
+                <a href="https://github.com/你的用户名" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="mailto:your-email@example.com"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 abb521.top | MIT License</p>
+        </div>
+    </footer>
+
+    <!-- 简单的 JavaScript 交互 -->
+    <script>
+        // 移动端菜单切换
+        document.querySelector('.mobile-menu').addEventListener('click', () => {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
