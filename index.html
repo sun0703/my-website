@@ -20,19 +20,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    // 导航栏滚动隐藏/显示
-let lastScroll = 0;
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    if (currentScroll > lastScroll && currentScroll > 100) {
-        document.querySelector('nav').style.transform = 'translateY(-100%)';
-    } else {
-        document.querySelector('nav').style.transform = 'translateY(0)';
-    }
-    lastScroll = currentScroll;
-});
     /* 修改移动端菜单激活状态 */
-.nav-links.active {
+    .nav-links.active {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -41,14 +30,14 @@ window.addEventListener('scroll', () => {
     width: 100%;
     background: rgba(255,255,255,0.95);
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
+    }
     <!-- 导航栏 -->
     <nav>
         <div class="container">
             <a href="#" class="logo">ab521.top</a>
             <button id="theme-toggle" class="theme-toggle">
-            <i class="fas fa-moon"></i>
-        </button>
+                <i class="fas fa-moon"></i>
+            </button>
             <ul class="nav-links">
                 <li><a href="#home">首页</a></li>
                 <li><a href="#about">关于</a></li>
@@ -57,6 +46,20 @@ window.addEventListener('scroll', () => {
             <i class="fas fa-bars mobile-menu"></i>
         </div>
     </nav>
+
+    <script>
+        // 导航栏滚动隐藏/显示
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                document.querySelector('nav').style.transform = 'translateY(-100%)';
+            } else {
+                document.querySelector('nav').style.transform = 'translateY(0)';
+            }
+            lastScroll = currentScroll;
+        });
+    </script>
 
     <!-- 首页内容 -->
     <section id="home" class="hero">
@@ -74,8 +77,8 @@ window.addEventListener('scroll', () => {
             <p>一名开发者，热爱技术与分享。</p>
             <div class="skills">
                 <div class="skill-item animate__animated animate__flipInX">HTML/CSS</div>
-                <div class="skill-item">JavaScript</div>
-                <div class="skill-item">Cloudflare</div>
+                <div class="skill-item animate__animated animate__flipInX">JavaScript</div>
+                <div class="skill-item animate__animated animate__flipInX">Cloudflare</div>
             </div>
         </div>
     </section>
@@ -85,11 +88,11 @@ window.addEventListener('scroll', () => {
         <div class="container">
             <h2>联系我</h2>
             <form class="contact-form" action="https://formspree.io/f/your-form-id" method="POST">
-            <input type="text" name="name" placeholder="您的姓名" required>
-            <input type="email" name="email" placeholder="您的邮箱" required>
-            <textarea name="message" placeholder="留言内容" rows="5" required></textarea>
-            <button type="submit">发送消息</button>
-        </form>
+                <input type="text" name="name" placeholder="您的姓名" required>
+                <input type="email" name="email" placeholder="您的邮箱" required>
+                <textarea name="message" placeholder="留言内容" rows="5" required></textarea>
+                <button type="submit">发送消息</button>
+            </form>
             <div class="social-links">
                 <a href="https://github.com/sun0703/" target="_blank"><i class="fab fa-github"></i></a>
                 <a href="mailto:123@ab521.top"><i class="fas fa-envelope"></i></a>
@@ -111,17 +114,17 @@ window.addEventListener('scroll', () => {
             document.querySelector('.nav-links').classList.toggle('active');
         });
         // 暗黑模式切换
-const themeToggle = document.getElementById('theme-toggle');
-themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-    // 保存用户偏好
-    localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
-});
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
 
-// 初始化加载主题
-if (localStorage.getItem('theme') === 'dark') {
-    document.body.classList.add('dark-mode');
-}
+        // 初始化加载主题
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
     </script>
 </body>
 </html>

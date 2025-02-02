@@ -227,3 +227,21 @@ footer {
     cursor: pointer;
     font-size: 1.2rem;
 }
+/* 暗黑模式补充样式 */
+.dark-mode footer {
+    background: #1a1a1a;
+    border-top: 1px solid #333;
+}
+
+.dark-mode .skill-item {
+    background: #2c3e50;
+    color: #fff;
+}
+
+.dark-mode .nav-links a {
+    color: #bdc3c7;
+}
+
+.dark-mode .hero {
+    background: linear-gradient(45deg, #2c3e50, #1a1a1a);
+}
