@@ -20,17 +20,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    /* 修改移动端菜单激活状态 */
-    .nav-links.active {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: rgba(255,255,255,0.95);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
+==== END ===
+
     <!-- 导航栏 -->
     <nav>
         <div class="container">
@@ -114,6 +105,7 @@
             document.querySelector('.nav-links').classList.toggle('active');
         });
         // 暗黑模式切换
+        const themeToggle = document.getElementById('theme-toggle');
         themeToggle.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
             const isDark = document.body.classList.contains('dark-mode');
@@ -124,6 +116,7 @@
         // 初始化加载主题
         if (localStorage.getItem('theme') === 'dark') {
             document.body.classList.add('dark-mode');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
         }
     </script>
 </body>
