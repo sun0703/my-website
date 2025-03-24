@@ -27,11 +27,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const themeToggle = document.getElementById('theme-toggle');
     if (themeToggle) {
         themeToggle.addEventListener('click', function() {
-            document.body.dataset.theme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+            const currentTheme = document.body.getAttribute('data-theme') || 'light';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            // 直接设置HTML属性，确保CSS选择器能正确匹配
+            document.body.setAttribute('data-theme', newTheme);
             
             // 更新图标
             const icon = themeToggle.querySelector('i');
-            if (document.body.dataset.theme === 'dark') {
+            if (newTheme === 'dark') {
                 icon.classList.remove('fa-moon');
                 icon.classList.add('fa-sun');
                 localStorage.setItem('theme', 'dark');
@@ -45,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // 从本地存储中恢复主题设置
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme) {
-            document.body.dataset.theme = savedTheme;
+            document.body.setAttribute('data-theme', savedTheme);
             const icon = themeToggle.querySelector('i');
             if (savedTheme === 'dark') {
                 icon.classList.remove('fa-moon');
