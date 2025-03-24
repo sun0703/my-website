@@ -25,37 +25,71 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 主题切换功能
     const themeToggle = document.getElementById('theme-toggle');
+    
+    // 设置主题函数
+    function setTheme(theme) {
+        // 设置HTML属性，确保CSS选择器能正确匹配
+        document.body.setAttribute('data-theme', theme);
+        
+        // 更新图标
+        if (themeToggle) {
+            const icon = themeToggle.querySelector('i');
+            if (icon) {
+                if (theme === 'dark') {
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                } else {
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                }
+            }
+        }
+        
+        // 保存主题设置
+        localStorage.setItem('theme', theme);
+        
+        // 触发自定义事件，方便其他组件响应主题变化
+        const event = new CustomEvent('themeChanged', { detail: { theme } });
+        document.dispatchEvent(event);
+    }
+    
+    // 获取当前应使用的主题
+    function getPreferredTheme() {
+        // 首先检查用户是否已经设置了主题偏好
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            return savedTheme;
+        }
+        
+        // 其次检查系统主题偏好
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            return 'dark';
+        }
+        
+        // 默认使用亮色主题
+        return 'light';
+    }
+    
+    // 初始化主题
+    setTheme(getPreferredTheme());
+    
+    // 添加主题切换事件监听
     if (themeToggle) {
         themeToggle.addEventListener('click', function() {
             const currentTheme = document.body.getAttribute('data-theme') || 'light';
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            // 直接设置HTML属性，确保CSS选择器能正确匹配
-            document.body.setAttribute('data-theme', newTheme);
-            
-            // 更新图标
-            const icon = themeToggle.querySelector('i');
-            if (newTheme === 'dark') {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-                localStorage.setItem('theme', 'light');
+            setTheme(newTheme);
+        });
+    }
+    
+    // 监听系统主题变化
+    if (window.matchMedia) {
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            // 只有当用户没有明确设置主题时，才跟随系统主题
+            if (!localStorage.getItem('theme')) {
+                setTheme(e.matches ? 'dark' : 'light');
             }
         });
-
-        // 从本地存储中恢复主题设置
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            document.body.setAttribute('data-theme', savedTheme);
-            const icon = themeToggle.querySelector('i');
-            if (savedTheme === 'dark') {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-            }
-        }
     }
 
     // 移动导航菜单切换
@@ -78,21 +112,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 平滑滚动到锚点
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 70, // 减去导航栏高度
-                    behavior: 'smooth'
-                });
-            }
-        });
+    // 设置当前页面的导航链接为激活状态
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const navLinks = document.querySelectorAll('.nav-links a');
+    navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+            link.classList.add('active');
+        }
     });
 
     // 添加返回顶部按钮功能

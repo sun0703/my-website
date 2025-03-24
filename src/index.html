@@ -82,11 +82,11 @@
         <div class="container">
             <a href="#" class="logo">ab521.top</a>
             <ul class="nav-links" id="nav-links">
-                <li><a href="#home">首页</a></li>
-                <li><a href="#about">关于</a></li>
-                <li><a href="#projects">项目</a></li>
-                <li><a href="#skills">技能</a></li>
-                <li><a href="#contact">联系</a></li>
+                <li><a href="index.html" class="active">首页</a></li>
+                <li><a href="about.html">关于</a></li>
+                <li><a href="projects.html">项目</a></li>
+                <li><a href="skills.html">技能</a></li>
+                <li><a href="contact.html">联系</a></li>
             </ul>
             <div class="nav-actions">
                 <button id="theme-toggle" class="theme-toggle" aria-label="切换主题">
@@ -99,133 +99,76 @@
         </div>
     </nav>
 
-    <!-- 首页内容 -->
-    <section id="home" class="hero">
-        <div class="container">
-            <h1 class="animate__animated animate__fadeInDown">欢迎来到我的网站</h1>
-            <p class="animate__animated animate__fadeIn animate__delay-1s">这是通过 GitHub + Cloudflare Pages 托管的静态网站，展示我的技能和项目</p>
-            <div class="hero-actions animate__animated animate__fadeInUp animate__delay-1s">
-                <a href="#projects" class="cta-button">查看项目</a>
-                <a href="#contact" class="cta-button">联系我</a>
+    <!-- 主要内容 -->
+    <main id="main-content">
+        <!-- 首页内容 -->
+        <section class="hero">
+            <div class="container">
+                <h1 class="animate__animated animate__fadeInDown">欢迎来到我的网站</h1>
+                <p class="animate__animated animate__fadeIn animate__delay-1s">这是通过 GitHub + Cloudflare Pages 托管的静态网站，展示我的技能和项目</p>
+                <div class="hero-actions animate__animated animate__fadeInUp animate__delay-1s">
+                    <a href="projects.html" class="cta-button">查看项目</a>
+                    <a href="contact.html" class="cta-button">联系我</a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 关于页面 -->
-    <section id="about" class="section">
-        <div class="container">
-            <h2>关于我</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>我是一名充满激情的开发者，专注于创建高质量、用户友好的web应用程序。我热爱技术与分享，不断学习新技术来提升自己的技能。</p>
-                    <p>我的目标是通过技术解决实际问题，创造有价值的用户体验。无论是前端设计还是后端开发，我都致力于编写高效、可维护的代码。</p>
-                    <blockquote>
-                        "简单是最终的复杂。" - Leonardo da Vinci
-                    </blockquote>
-                </div>
-                <div class="about-image">
-                    <img src="./images/profile.jpg" alt="个人照片" loading="lazy">
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- 项目展示 -->
-    <section id="projects" class="section">
-        <div class="container">
-            <h2>我的项目</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="./images/project1.jpg" alt="项目1截图" loading="lazy">
+        <!-- 网站特色 -->
+        <section class="section features-section">
+            <div class="container">
+                <h2 class="section-title">网站特色</h2>
+                <div class="features">
+                    <div class="feature-card animate__animated animate__fadeInUp">
+                        <i class="fas fa-user-circle"></i>
+                        <h3>关于我</h3>
+                        <p>了解我的背景、经验和专业技能。</p>
+                        <a href="about.html" class="feature-link">查看详情 <i class="fas fa-arrow-right"></i></a>
                     </div>
-                    <div class="project-content">
-                        <h3>个人网站</h3>
-                        <p>使用HTML、CSS和JavaScript构建的响应式个人网站，托管在Cloudflare Pages上。</p>
-                        <div class="project-tags">
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>JavaScript</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> 访问</a>
-                            <a href="https://github.com/sun0703/" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> 代码</a>
-                        </div>
+                    
+                    <div class="feature-card animate__animated animate__fadeInUp animate__delay-1s">
+                        <i class="fas fa-code"></i>
+                        <h3>项目展示</h3>
+                        <p>浏览我开发的各种项目和作品。</p>
+                        <a href="projects.html" class="feature-link">查看详情 <i class="fas fa-arrow-right"></i></a>
                     </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="./images/project2.jpg" alt="项目2截图" loading="lazy">
+                    
+                    <div class="feature-card animate__animated animate__fadeInUp animate__delay-2s">
+                        <i class="fas fa-brain"></i>
+                        <h3>技能专长</h3>
+                        <p>探索我掌握的技术栈和专业能力。</p>
+                        <a href="skills.html" class="feature-link">查看详情 <i class="fas fa-arrow-right"></i></a>
                     </div>
-                    <div class="project-content">
-                        <h3>任务管理应用</h3>
-                        <p>一个简单但功能强大的任务管理应用，帮助用户组织日常工作。</p>
-                        <div class="project-tags">
-                            <span>React</span>
-                            <span>Firebase</span>
-                            <span>CSS</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> 访问</a>
-                            <a href="https://github.com/sun0703/" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> 代码</a>
-                        </div>
+                    
+                    <div class="feature-card animate__animated animate__fadeInUp animate__delay-3s">
+                        <i class="fas fa-envelope"></i>
+                        <h3>联系方式</h3>
+                        <p>通过表单或社交媒体与我取得联系。</p>
+                        <a href="contact.html" class="feature-link">查看详情 <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- 技能展示 -->
-    <section id="skills" class="section">
-        <div class="container">
-            <h2>我的技能</h2>
-            <div class="skills">
-                <div class="skill-item animate__animated animate__flipInX">
-                    <i class="fab fa-html5"></i>
-                    <h3>HTML/CSS</h3>
-                    <p>构建响应式、现代化的用户界面，注重可访问性和最佳实践。</p>
-                </div>
-                <div class="skill-item animate__animated animate__flipInX animate__delay-1s">
-                    <i class="fab fa-js"></i>
-                    <h3>JavaScript</h3>
-                    <p>使用现代JavaScript开发交互式网页应用，熟悉ES6+特性。</p>
-                </div>
-                <div class="skill-item animate__animated animate__flipInX animate__delay-2s">
-                    <i class="fab fa-cloudflare"></i>
-                    <h3>Cloudflare</h3>
-                    <p>利用Cloudflare Pages进行静态网站托管，优化性能和安全性。</p>
+        </section>
+        
+        <!-- 最新动态 -->
+        <section class="section updates-section">
+            <div class="container">
+                <h2 class="section-title">最新动态</h2>
+                <div class="updates">
+                    <div class="update-card">
+                        <div class="update-date">2025年1月15日</div>
+                        <h3>网站改版完成</h3>
+                        <p>完成了网站的多页面改版，提升了用户体验和页面加载速度。</p>
+                    </div>
+                    
+                    <div class="update-card">
+                        <div class="update-date">2024年12月20日</div>
+                        <h3>新项目上线</h3>
+                        <p>最新的个人项目已经上线，欢迎在项目页面查看详情。</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- 联系页面 -->
-    <section id="contact" class="section">
-        <div class="container">
-            <h2>联系我</h2>
-            <form class="contact-form" id="contact-form" action="https://formspree.io/f/your-form-id" method="POST">
-                <div class="form-group">
-                    <label for="name">您的姓名</label>
-                    <input type="text" id="name" name="name" placeholder="请输入您的姓名" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">您的邮箱</label>
-                    <input type="email" id="email" name="email" placeholder="请输入您的邮箱" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">留言内容</label>
-                    <textarea name="message" id="message" placeholder="请输入留言内容" rows="5" required></textarea>
-                </div>
-                <button type="submit">发送消息</button>
-            </form>
-            <div class="social-links">
-                <a href="https://github.com/sun0703/" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="mailto:123@ab521.top" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- 页脚 -->
     <footer>

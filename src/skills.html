@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="我的技能展示 - 了解我掌握的技术栈和专业能力">
+    <meta name="keywords" content="技术技能, 编程语言, 开发工具, 专业能力">
+    <meta name="author" content="ab521.top">
+    <meta name="theme-color" content="#3498db">
+    
+    <!-- 安全相关 -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: 'unsafe-inline' 'unsafe-eval'; img-src 'self' https: data:;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    
+    <title>技能展示 | ab521.top</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="./images/apple-touch-icon.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body data-theme="light">
+    <!-- 跳转到主要内容的链接（可访问性） -->
+    <a href="#main-content" class="skip-link">跳转到主要内容</a>
+    
+    <!-- 导航栏 -->
+    <nav id="main-nav">
+        <div class="container">
+            <a href="index.html" class="logo">ab521.top</a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="about.html">关于</a></li>
+                <li><a href="projects.html">项目</a></li>
+                <li><a href="skills.html" class="active">技能</a></li>
+                <li><a href="contact.html">联系</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle" aria-label="切换主题">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="mobile-menu" id="mobile-menu" aria-label="菜单">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main id="main-content">
+        <section class="section">
+            <div class="container">
+                <h1 class="page-title animate__animated animate__fadeInDown">我的技能</h1>
+                <p class="section-intro animate__animated animate__fadeIn">以下是我专注的技术领域和专业技能。</p>
+                
+                <div class="skills-container">
+                    <div class="skills-category">
+                        <h2>前端开发</h2>
+                        <div class="skills">
+                            <div class="skill-item animate__animated animate__flipInX">
+                                <i class="fab fa-html5"></i>
+                                <h3>HTML/CSS</h3>
+                                <p>构建响应式、现代化的用户界面，注重可访问性和最佳实践。</p>
+                                <div class="skill-level">
+                                    <div class="skill-progress" style="width: 95%;"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item animate__animated animate__flipInX animate__delay-1s">
+                                <i class="fab fa-js"></i>
+                                <h3>JavaScript</h3>
+                                <p>使用现代JavaScript开发交互式网页应用，熟悉ES6+特性。</p>
+                                <div class="skill-level">
+                                    <div class="skill-progress" style="width: 90%;"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item animate__animated animate__flipInX animate__delay-2s">
+                                <i class="fab fa-react"></i>
+                                <h3>React</h3>
+                                <p>使用React构建用户界面，创建可复用的组件和状态管理。</p>
+                                <div class="skill-level">
+                                    <div class="skill-progress" style="width: 85%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skills-category">
+                        <h2>后端与部署</h2>
+                        <div class="skills">
+                            <div class="skill-item animate__animated animate__flipInX">
+                                <i class="fab fa-node-js"></i>
+                                <h3>Node.js</h3>
+                                <p>使用Node.js开发后端服务和API，构建全栈应用。</p>
+                                <div class="skill-level">
+                                    <div class="skill-progress" style="width: 80%;"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item animate__animated animate__flipInX animate__delay-1s">
+                                <i class="fab fa-cloudflare"></i>
+                                <h3>Cloudflare</h3>
+                                <p>利用Cloudflare Pages进行静态网站托管，优化性能和安全性。</p>
+                                <div class="skill-level">
+                                    <div class="skill-progress" style="width: 88%;"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item animate__animated animate__flipInX animate__delay-2s">
+                                <i class="fab fa-github"></i>
+                                <h3>Git & GitHub</h3>
+                                <p>使用Git进行版本控制，通过GitHub进行协作和CI/CD流程。</p>
+                                <div class="skill-level">
+                                    <div class="skill-progress" style="width: 92%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skills-category">
+                        <h2>其他技能</h2>
+                        <div class="skills">
+                            <div class="skill-item animate__animated animate__flipInX">
+                                <i class="fas fa-mobile-alt"></i>
+                                <h3>响应式设计</h3>
+                                <p>创建在各种设备上都能完美展示的响应式网站。</p>
+                                <div class="skill-level">
+                                    <div class="skill-progress" style="width: 90%;"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item animate__animated animate__flipInX animate__delay-1s">
+                                <i class="fas fa-universal-access"></i>
+                                <h3>Web可访问性</h3>
+                                <p>确保网站对所有用户都可访问，遵循WCAG标准。</p>
+                                <div class="skill-level">
+                                    <div class="skill-progress" style="width: 85%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 ab521.top | <a href="./license.html">MIT License</a></p>
+            <div class="footer-links">
+                <a href="#privacy">隐私政策</a>
+                <a href="#terms">使用条款</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="./js/main.js"></script>
+</body>
+</html>

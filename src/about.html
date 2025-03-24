@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="关于我 - 了解我的技能、经验和职业目标">
+    <meta name="keywords" content="个人简介, 开发者, 技术博客, 职业经历">
+    <meta name="author" content="ab521.top">
+    <meta name="theme-color" content="#3498db">
+    
+    <!-- 安全相关 -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: 'unsafe-inline' 'unsafe-eval'; img-src 'self' https: data:;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    
+    <title>关于我 | ab521.top</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="./images/apple-touch-icon.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body data-theme="light">
+    <!-- 跳转到主要内容的链接（可访问性） -->
+    <a href="#main-content" class="skip-link">跳转到主要内容</a>
+    
+    <!-- 导航栏 -->
+    <nav id="main-nav">
+        <div class="container">
+            <a href="index.html" class="logo">ab521.top</a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="about.html" class="active">关于</a></li>
+                <li><a href="projects.html">项目</a></li>
+                <li><a href="skills.html">技能</a></li>
+                <li><a href="contact.html">联系</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle" aria-label="切换主题">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="mobile-menu" id="mobile-menu" aria-label="菜单">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main id="main-content">
+        <section class="section">
+            <div class="container">
+                <h1 class="page-title animate__animated animate__fadeInDown">关于我</h1>
+                <div class="about-content">
+                    <div class="about-text animate__animated animate__fadeIn">
+                        <p>我是一名充满激情的开发者，专注于创建高质量、用户友好的web应用程序。我热爱技术与分享，不断学习新技术来提升自己的技能。</p>
+                        <p>我的目标是通过技术解决实际问题，创造有价值的用户体验。无论是前端设计还是后端开发，我都致力于编写高效、可维护的代码。</p>
+                        <blockquote>
+                            "简单是最终的复杂。" - Leonardo da Vinci
+                        </blockquote>
+                        
+                        <h2>我的经历</h2>
+                        <div class="experience">
+                            <div class="experience-item">
+                                <h3>技术栈</h3>
+                                <ul>
+                                    <li>前端：HTML5, CSS3, JavaScript (ES6+), React</li>
+                                    <li>后端：Node.js, Python</li>
+                                    <li>工具：Git, Docker, VS Code</li>
+                                    <li>云服务：Cloudflare Pages, GitHub Actions</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="experience-item">
+                                <h3>工作理念</h3>
+                                <p>我相信优秀的软件不仅要满足功能需求，还要具备：</p>
+                                <ul>
+                                    <li>清晰的代码结构和文档</li>
+                                    <li>良好的用户体验</li>
+                                    <li>可靠的性能表现</li>
+                                    <li>安全的实现方案</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-image animate__animated animate__fadeInRight">
+                        <img src="./images/profile.jpg" alt="个人照片" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 ab521.top | <a href="./license.html">MIT License</a></p>
+            <div class="footer-links">
+                <a href="#privacy">隐私政策</a>
+                <a href="#terms">使用条款</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="./js/main.js"></script>
+</body>
+</html>
