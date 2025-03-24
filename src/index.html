@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="我的个人网站，展示我的技能、项目和联系方式">
-    <meta name="keywords" content="个人网站, 作品集, 开发者, 前端, 网页设计">
+    <meta name="description" content="Web开发者个人作品集 - 创造卓越用户体验的数字解决方案">
+    <meta name="keywords" content="前端开发, UI设计, 用户体验, 网页设计, 响应式设计">
     <meta name="author" content="ab521.top">
     <meta name="theme-color" content="#3498db">
     
@@ -14,16 +14,29 @@
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
     
-    <title>欢迎访问 | ab521.top</title>
+    <!-- Schema.org 结构化数据 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "ab521.top",
+      "url": "https://ab521.top",
+      "jobTitle": "Web Developer",
+      "knowsAbout": ["前端开发", "用户体验设计", "响应式设计"]
+    }
+    </script>
     
-    <!-- 资源引入 -->
-    <link rel="icon" href="/src/images/favicon.ico" type="image/x-icon">
+    <title>ab521.top | 创造数字体验</title>
+    
+    <!-- 关键资源预加载 -->
+    <link rel="preload" href="/src/css/style.css" as="style">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/src/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="/src/images/favicon.ico" type="image/x-icon">
 </head>
 <body data-theme="light">
     <!-- 导航栏 -->
@@ -32,9 +45,9 @@
             <a href="#" class="logo">ab521.top</a>
             <ul class="nav-links" id="nav-links">
                 <li><a href="/src/index.html" class="active">首页</a></li>
-                <li><a href="/src/about.html">关于</a></li>
                 <li><a href="/src/projects.html">项目</a></li>
                 <li><a href="/src/skills.html">技能</a></li>
+                <li><a href="/src/about.html">关于</a></li>
                 <li><a href="/src/contact.html">联系</a></li>
             </ul>
             <div class="nav-actions">
@@ -50,39 +63,13 @@
 
     <!-- 主要内容 -->
     <main id="main-content">
-        <!-- 首页内容 -->
+        <!-- 首屏区域 - 核心价值传达 -->
         <section class="hero">
             <div class="container">
-                <h1 class="animate__animated animate__fadeInDown">Hi, 欢迎访问我的个人网站</h1>
-                <p class="animate__animated animate__fadeIn animate__delay-1s">我是一名Web开发者，热衷于创造优秀的用户体验</p>
+                <h1 class="animate__animated animate__fadeInDown">打造有影响力的<br>数字体验</h1>
+                <p class="animate__animated animate__fadeIn animate__delay-1s">前端开发 · 用户体验设计 · 创意实现</p>
                 <div class="hero-actions animate__animated animate__fadeInUp animate__delay-1s">
-                    <a href="projects.html" class="cta-button">查看项目</a>
-                    <a href="contact.html" class="cta-button">联系我</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- 核心导航 -->
-        <section class="section features-section">
-            <div class="container">
-                <div class="features">
-                    <div class="feature-card animate__animated animate__fadeInUp">
-                        <i class="fas fa-code"></i>
-                        <h3>项目展示</h3>
-                        <a href="projects.html" class="feature-link">查看作品 <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    
-                    <div class="feature-card animate__animated animate__fadeInUp animate__delay-1s">
-                        <i class="fas fa-brain"></i>
-                        <h3>技术栈</h3>
-                        <a href="skills.html" class="feature-link">了解更多 <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    
-                    <div class="feature-card animate__animated animate__fadeInUp animate__delay-2s">
-                        <i class="fas fa-user-circle"></i>
-                        <h3>关于我</h3>
-                        <a href="about.html" class="feature-link">个人简介 <i class="fas fa-arrow-right"></i></a>
-                    </div>
+                    <a href="projects.html" class="cta-button">查看作品集</a>
                 </div>
             </div>
         </section>
@@ -91,7 +78,10 @@
     <!-- 页脚 -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 ab521.top | <a href="./license.html">MIT License</a></p>
+            <p>&copy; 2025 ab521.top</p>
+            <div class="social-links">
+                <a href="https://github.com/sun0703/" aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+            </div>
         </div>
     </footer>
 
