@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="页面未找到 - ab521.top">
+    <meta name="robots" content="noindex,follow">
+    <meta name="theme-color" content="#3498db">
+    
+    <!-- 安全相关 -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: 'unsafe-inline' 'unsafe-eval'; img-src 'self' https: data:;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    
+    <title>404 - 页面未找到 | ab521.top</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="./images/apple-touch-icon.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        .error-container {
+            text-align: center;
+            padding: 4rem 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .error-code {
+            font-size: 6rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .error-message {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--text-color);
+        }
+        
+        .error-description {
+            margin-bottom: 2rem;
+            color: var(--text-color);
+        }
+        
+        .error-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        @media (max-width: 768px) {
+            .error-code {
+                font-size: 4rem;
+            }
+            
+            .error-message {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <!-- 导航栏 -->
+    <nav id="main-nav">
+        <div class="container">
+            <a href="index.html" class="logo">ab521.top</a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="about.html">关于</a></li>
+                <li><a href="projects.html">项目</a></li>
+                <li><a href="skills.html">技能</a></li>
+                <li><a href="contact.html">联系</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle" aria-label="切换主题">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="mobile-menu" id="mobile-menu" aria-label="菜单">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main id="main-content">
+        <div class="error-container animate__animated animate__fadeIn">
+            <div class="error-code">404</div>
+            <h1 class="error-message">页面未找到</h1>
+            <p class="error-description">
+                抱歉，您访问的页面可能已被移动或不存在。
+                请检查URL是否正确，或使用下面的链接返回首页。
+            </p>
+            <div class="error-actions">
+                <a href="index.html" class="btn btn-primary">
+                    <i class="fas fa-home"></i> 返回首页
+                </a>
+                <a href="contact.html" class="btn btn-outline">
+                    <i class="fas fa-envelope"></i> 联系我们
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2023 ab521.top. 保留所有权利。</p>
+                <div class="footer-links">
+                    <a href="index.html">首页</a>
+                    <a href="about.html">关于</a>
+                    <a href="projects.html">项目</a>
+                    <a href="skills.html">技能</a>
+                    <a href="contact.html">联系</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="./js/main.js"></script>
+</body>
+</html>

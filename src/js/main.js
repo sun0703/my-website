@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // 注册Service Worker
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', function() {
-            navigator.serviceWorker.register('/js/service-worker.js')
+            navigator.serviceWorker.register('/src/js/service-worker.js')
                 .then(function(registration) {
                     console.log('Service Worker 注册成功，范围:', registration.scope);
                 })

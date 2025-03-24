@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ab521.top/sitemap.xml
