@@ -3,16 +3,16 @@ const CACHE_NAME = 'ab521-website-cache-v1';
 
 // 需要缓存的资源
 const urlsToCache = [
-    '/',
-    '/index.html',
-    '/about.html',
-    '/projects.html',
-    '/skills.html',
-    '/contact.html',
-    '/css/style.css',
-    '/js/main.js',
-    '/images/favicon.ico',
-    '/images/apple-touch-icon.png'
+    './',
+    './index.html',
+    './about.html',
+    './projects.html',
+    './skills.html',
+    './contact.html',
+    './css/style.css',
+    './js/main.js',
+    './images/favicon.ico',
+    './images/apple-touch-icon.png'
 ];
 
 // 安装 Service Worker
