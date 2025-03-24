@@ -1,3 +1,8 @@
+/* 预加载状态 - 禁用过渡效果 */
+.preload * {
+    transition: none !important;
+}
+
 /* CSS变量定义 */
 :root {
     /* 颜色 */
@@ -96,6 +101,10 @@ body {
     font-family: var(--font-primary);
     background: var(--bg-color);
     color: var(--text-color);
+    /* 添加预加载类 */
+    &.preload * {
+        transition: none !important;
+    }
     transition: background-color var(--transition-speed) var(--transition-timing),
                 color var(--transition-speed) var(--transition-timing),
                 border-color var(--transition-speed) var(--transition-timing);
