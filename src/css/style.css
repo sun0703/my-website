@@ -1,6 +1,20 @@
-/* 预加载状态 - 禁用过渡效果 */
+/* 预加载和主题切换控制 */
 .preload * {
     transition: none !important;
+}
+
+/* 确保主题切换时不闪烁 */
+html, body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+    min-height: 100vh;
+    opacity: 1;
+}
+
+/* 防止FOUC (Flash of Unstyled Content) */
+html.js body {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease;
 }
 
 /* CSS变量定义 */
@@ -101,6 +115,11 @@ body {
     font-family: var(--font-primary);
     background: var(--bg-color);
     color: var(--text-color);
+    /* 优化主题切换过渡 */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    backface-visibility: hidden;
+    transform: translateZ(0);
     /* 添加预加载类 */
     &.preload * {
         transition: none !important;
