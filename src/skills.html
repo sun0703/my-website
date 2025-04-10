@@ -24,6 +24,36 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* 手机端适配优化 */
+        @media (max-width: 768px) {
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+            .skill-card {
+                padding: 1rem;
+            }
+            .skill-title {
+                font-size: 1rem;
+            }
+            .skill-bar-container {
+                height: 6px;
+            }
+        }
+
+        /* 动画优化 */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        /* 懒加载优化 */
+        .skill-card img {
+            loading: lazy;
+        }
+    </style>
 </head>
 <body data-theme="light">
     <!-- 跳转到主要内容的链接（可访问性） -->

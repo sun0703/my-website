@@ -197,6 +197,35 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* 手机端适配优化 */
+        @media (max-width: 768px) {
+            .projects-container {
+                grid-template-columns: 1fr;
+            }
+            .project-card {
+                padding: 1rem;
+            }
+            .project-details h3 {
+                font-size: 1.2rem;
+            }
+            .project-details p {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* 动画优化 */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        /* 懒加载优化 */
+        .project-card img {
+            loading: lazy;
+        }
     </style>
 </head>
 <body data-theme="light">

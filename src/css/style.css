@@ -85,12 +85,45 @@ html.js body {
     background: var(--primary-color);
     color: white;
     padding: 8px;
-    z-index: 100;
-    transition: top 0.3s;
+    z-index: 9999;
+    transition: top 0.3s ease;
+    text-decoration: none;
+    font-weight: bold;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
 }
 
 .skip-link:focus {
     top: 0;
+    outline-color: white;
+}
+
+/* 焦点状态样式 */
+*:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+    transition: outline 0.2s ease;
+}
+
+/* 键盘导航高亮 */
+.focused {
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.5);
+    transition: box-shadow 0.2s ease;
+}
+
+/* 无障碍友好的交互状态 */
+a:hover,
+button:hover,
+[role="button"]:hover {
+    opacity: 0.9;
+    transition: opacity 0.2s ease;
+}
+
+a:focus,
+button:focus,
+[role="button"]:focus {
+    text-decoration: underline;
+    opacity: 0.8;
 }
 
 /* 基础重置 */
@@ -348,7 +381,7 @@ nav .container {
 .hero h1 {
     font-size: clamp(2rem, 5vw, 4rem);
     margin-bottom: var(--spacing-sm);
-    animation: fadeInDown 1s ease-out;
+    animation: fadeInDown 1s ease-out, pulse 2s infinite 1.5s;
     position: relative;
 }
 
@@ -512,9 +545,19 @@ nav .container {
                 box-shadow var(--transition-speed) var(--transition-timing);
 }
 
+.project-card {
+    transition: all 0.3s ease;
+}
+
 .project-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px);
     box-shadow: var(--shadow-lg);
+    animation: wiggle 0.3s ease-in-out;
+}
+
+.project-card:focus-within {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 4px;
 }
 
 .project-image {
@@ -762,9 +805,19 @@ nav .container {
     color: var(--primary-color);
 }
 
+.skill-item {
+    transition: all 0.3s ease;
+}
+
 .skill-item:hover {
-    transform: translateY(-4px);
+    transform: translateY(-8px);
     box-shadow: var(--shadow-lg);
+    animation: fadeInScale 0.3s ease-out;
+}
+
+.skill-item:focus-within {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 4px;
 }
 
 /* 联系页面 */
