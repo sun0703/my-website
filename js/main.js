@@ -296,12 +296,67 @@ function debounce(func, wait) {
     };
 }
 
+// 打字机效果
+function typeWriter() {
+    const texts = [
+        "Web开发者",
+        "UI/UX设计师",
+        "全栈工程师",
+        "问题解决者"
+    ];
+    let textIndex = 0;
+    let charIndex = 0;
+    const typedTextElement = document.querySelector('.typed-text');
+    
+    if (!typedTextElement) return;
+
+    function type() {
+        if (charIndex < texts[textIndex].length) {
+            typedTextElement.textContent += texts[textIndex].charAt(charIndex);
+            charIndex++;
+            setTimeout(type, 100);
+        } else {
+            setTimeout(erase, 2000);
+        }
+    }
+
+    function erase() {
+        if (charIndex > 0) {
+            typedTextElement.textContent = texts[textIndex].substring(0, charIndex - 1);
+            charIndex--;
+            setTimeout(erase, 50);
+        } else {
+            textIndex = (textIndex + 1) % texts.length;
+            setTimeout(type, 500);
+        }
+    }
+
+    type();
+}
+
+// 滚动动画
+function initScrollAnimation() {
+    const scrollDown = document.querySelector('.scroll-down');
+    const heroSection = document.querySelector('.fullscreen-hero');
+    
+    if (!scrollDown || !heroSection) return;
+
+    scrollDown.addEventListener('click', () => {
+        const nextSection = heroSection.nextElementSibling;
+        if (nextSection) {
+            nextSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+}
+
 // 初始化
 document.addEventListener('DOMContentLoaded', () => {
     initTheme();
     setupMobileMenu();
     setupScrollHandlers();
     setupFormValidation();
+    typeWriter();
+    initScrollAnimation();
 });
 
 // 优化窗口大小改变事件处理
