@@ -298,7 +298,7 @@ function debounce(func, wait) {
 
 // 初始化
 document.addEventListener('DOMContentLoaded', () => {
-    initializeTheme();
+    initTheme();
     setupMobileMenu();
     setupScrollHandlers();
     setupFormValidation();

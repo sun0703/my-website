@@ -366,7 +366,7 @@ window.addEventListener('scroll', throttle(() => {
 }, 100));
 
 // 优化窗口大小改变事件处理
-window.addEventListener('resize', throttle(() => {
+window.addEventListener('resize', debounce(() => {
     const navLinks = document.getElementById('nav-links');
     if (window.innerWidth > 768 && navLinks) {
         navLinks.classList.remove('active');
