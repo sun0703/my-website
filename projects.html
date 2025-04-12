@@ -224,7 +224,7 @@
 
         /* 懒加载优化 */
         .project-card img {
-            loading: lazy;
+            display: block; /* Example property to avoid an empty rule set */
         }
     </style>
 </head>
@@ -323,47 +323,30 @@
     <script src="./js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // 项目过滤功能
             const filterButtons = document.querySelectorAll('.filter-btn');
             const projectCards = document.querySelectorAll('.project-card');
-            
+            let currentFilter = 'all';
+
+            function filterProjects(category) {
+                currentFilter = category;
+                projectCards.forEach(card => {
+                    const shouldShow = category === 'all' || card.dataset.category === category;
+                    card.style.display = shouldShow ? 'block' : 'none';
+                    if (shouldShow) {
+                        card.classList.remove('animate__fadeIn');
+                        void card.offsetWidth;
+                        card.classList.add('animate__fadeIn');
+                    }
+                });
+            }
+
             filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // 移除所有按钮的active类
+                button.addEventListener('click', () => {
                     filterButtons.forEach(btn => btn.classList.remove('active'));
-                    
-                    // 给当前点击的按钮添加active类
-                    this.classList.add('active');
-                    
-                    // 获取过滤类别
-                    const filterValue = this.getAttribute('data-filter');
-                    
-                    // 过滤项目
-                    projectCards.forEach(card => {
-                        if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
-                            card.style.display = 'block';
-                            
-                            // 添加动画效果
-                            card.classList.remove('animate__fadeIn');
-                            void card.offsetWidth; // 触发重绘
-                            card.classList.add('animate__fadeIn');
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
+                    button.classList.add('active');
+                    filterProjects(button.dataset.filter);
                 });
             });
-            
-            // 如果URL中包含项目ID，滚动到该项目
-            const hash = window.location.hash;
-            if (hash) {
-                const targetElement = document.querySelector(hash);
-                if (targetElement) {
-                    setTimeout(() => {
-                        targetElement.scrollIntoView({ behavior: 'smooth' });
-                    }, 500);
-                }
-            }
         });
     </script>
 </body>

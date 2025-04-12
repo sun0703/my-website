@@ -16,6 +16,8 @@
 /* 确保根元素背景色立即应用 */
 html {
     background-color: #f5f5f5;
+    visibility: hidden;
+    opacity: 0;
 }
 
 html[data-theme="dark"] {
@@ -44,9 +46,25 @@ body[data-theme="dark"] {
     animation: none !important;
 }
 
+/* 禁用预加载状态下的所有动画 */
+.preload * {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -ms-transition: none !important;
+    -o-transition: none !important;
+    transition: none !important;
+    animation: none !important;
+}
+
 /* 防止闪烁的关键样式 */
 .theme-pending {
     opacity: 0 !important;
+    pointer-events: none;
+}
+
+.theme-pending * {
+    transition: none !important;
+    animation: none !important;
 }
 
 .theme-ready {
@@ -62,4 +80,34 @@ a, button, input, select, textarea {
 /* 确保导航栏不闪烁 */
 header, nav, .nav-links, .logo {
     transition: none !important;
+}
+
+/* 主题切换时的过渡优化 */
+[data-theme] {
+    transition: none;
+}
+
+.theme-transition,
+.theme-transition * {
+    transition: background-color 0.3s ease,
+                color 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease !important;
+}
+
+/* 确保图片不闪烁 */
+img {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+img.loaded {
+    opacity: 1;
+}
+
+/* 主题切换完成后的状态 */
+html.theme-ready {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.2s ease;
 }

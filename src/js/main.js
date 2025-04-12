@@ -1,21 +1,54 @@
-// 主题初始化和切换逻辑
-function initTheme() {
-    // 获取保存的主题
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    
-    // 设置文档主题
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    document.body.setAttribute('data-theme', savedTheme);
-    
-    // 更新主题切换按钮图标
-    const themeToggle = document.getElementById('theme-toggle');
-    if (themeToggle) {
-        const icon = themeToggle.querySelector('i');
-        if (icon) {
-            icon.className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+// 主题切换优化
+const themeManager = {
+    init() {
+        // 添加主题准备中标记
+        document.documentElement.classList.add('theme-pending');
+        
+        // 获取保存的主题
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        this.applyTheme(savedTheme);
+
+        // 监听主题切换按钮
+        const themeToggle = document.getElementById('theme-toggle');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => this.toggleTheme());
         }
+
+        // 延迟移除准备中标记
+        requestAnimationFrame(() => {
+            document.documentElement.classList.remove('theme-pending');
+            document.documentElement.classList.add('theme-ready');
+        });
+    },
+
+    applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        document.body.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        
+        // 更新主题图标
+        const icon = document.querySelector('#theme-toggle i');
+        if (icon) {
+            icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+    },
+
+    toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        // 添加过渡类
+        document.documentElement.classList.add('theme-transition');
+        
+        // 应用新主题
+        this.applyTheme(newTheme);
+        
+        // 移除过渡类
+        setTimeout(() => {
+            document.documentElement.classList.remove('theme-transition');
+        }, 300);
     }
-}
+};
 
 // 性能优化 - 添加防抖函数
 function debounce(func, wait) {
@@ -282,8 +315,10 @@ const pageAnalyzer = {
     }
 };
 
-// 初始化主题 - 在脚本执行时立即调用
-initTheme();
+// 初始化主题管理器
+document.addEventListener('DOMContentLoaded', () => {
+    themeManager.init();
+});
 
 // 初始化性能监控
 performanceMonitor.init();
@@ -300,39 +335,38 @@ requestOptimizer.init();
 // 初始化页面分析器
 pageAnalyzer.init();
 
+// Service Worker注册
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+            .then(registration => {
+                console.log('ServiceWorker注册成功:', registration.scope);
+            })
+            .catch(error => {
+                console.log('ServiceWorker注册失败:', error);
+            });
+    });
+}
+
 // DOM加载完成后的处理
-document.addEventListener('DOMContentLoaded', () => {
-    // 再次确保主题正确设置
-    initTheme();
-    
-    // 移除预加载状态
-    setTimeout(() => {
+document.addEventListener('DOMContentLoaded', function() {
+    // 定义移除预加载状态的函数
+    function removePreloadClass() {
         document.body.classList.remove('preload');
-    }, 50);
+    }
+
+    // 调用移除预加载状态
+    setTimeout(removePreloadClass, 50);
     
     // 主题切换按钮事件监听
     const themeToggle = document.getElementById('theme-toggle');
     if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            document.documentElement.setAttribute('data-theme', newTheme);
-            document.body.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            
-            // 更新按钮图标
-            const icon = themeToggle.querySelector('i');
-            if (icon) {
-                icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-            }
-        });
+        // 主题切换按钮事件监听已在 themeManager.init 中处理，无需重复绑定
     }
-
-    // 移动端菜单处理
-    const mobileMenuButton = document.getElementById('mobile-menu');
-    const navLinks = document.getElementById('nav-links');
     
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const navLinks = document.getElementById('nav-links');
+
     if (mobileMenuButton && navLinks) {
         mobileMenuButton.addEventListener('click', () => {
             navLinks.classList.toggle('active');
@@ -342,33 +376,33 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-});
 
-// 页面加载完成后确保显示
-window.addEventListener('load', () => {
-    // 确保body可见
-    document.body.style.visibility = 'visible';
-    
-    // 移除预加载状态
-    document.body.classList.remove('preload');
-});
+    // 页面加载完成后确保显示
+    window.addEventListener('load', () => {
+        // 确保body可见
+        document.body.style.visibility = 'visible';
+        
+        // 调用移除预加载状态函数
+        removePreloadClass();
+    });
 
-// 优化滚动事件处理
-const backToTopButton = document.getElementById('back-to-top');
-window.addEventListener('scroll', throttle(() => {
-    if (backToTopButton) {
-        if (window.scrollY > 300) {
-            backToTopButton.classList.add('visible');
-        } else {
-            backToTopButton.classList.remove('visible');
+    // 优化滚动事件处理
+    const backToTopButton = document.getElementById('back-to-top');
+    window.addEventListener('scroll', throttle(() => {
+        if (backToTopButton) {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
         }
-    }
-}, 100));
+    }, 100));
 
-// 优化窗口大小改变事件处理
-window.addEventListener('resize', debounce(() => {
-    const navLinks = document.getElementById('nav-links');
-    if (window.innerWidth > 768 && navLinks) {
-        navLinks.classList.remove('active');
-    }
-}, 250));
+    // 优化窗口大小改变事件处理
+    window.addEventListener('resize', debounce(() => {
+        const navLinks = document.getElementById('nav-links');
+        if (window.innerWidth > 768 && navLinks) {
+            navLinks.classList.remove('active');
+        }
+    }, 250));
+});

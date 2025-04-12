@@ -37,8 +37,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 移动菜单功能
-    const mobileMenuButton = document.getElementById('mobile-menu');
+    // 修复移动菜单功能
+    const mobileMenuButton = document.getElementById('mobile-menu-button'); // 修改ID
     const navLinks = document.getElementById('nav-links');
     
     if (mobileMenuButton && navLinks) {

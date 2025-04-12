@@ -1,0 +1,49 @@
+/* 防止主题闪烁的专用样式表 */
+
+/* 关键颜色变量的硬编码备份 */
+:root {
+    color-scheme: light;
+    --bg-color: #f5f5f5;
+    --text-color: #333;
+}
+
+:root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg-color: #1a1a1a;
+    --text-color: #ffffff;
+}
+
+/* 确保根元素背景色立即应用 */
+html {
+    background-color: var(--bg-color);
+    transition: none !important;
+}
+
+/* 确保body背景色立即应用 */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    visibility: hidden;
+    transition: none !important;
+}
+
+/* 主题就绪后的过渡效果 */
+html.theme-ready {
+    transition: background-color 0.3s ease !important;
+}
+
+body.theme-ready {
+    visibility: visible;
+    transition: background-color 0.3s ease, color 0.3s ease !important;
+}
+
+/* 确保导航栏不闪烁 */
+#main-nav {
+    background-color: var(--white);
+    transition: none !important;
+}
+
+/* 主题就绪后恢复导航栏过渡效果 */
+.theme-ready #main-nav {
+    transition: background-color 0.3s ease !important;
+}

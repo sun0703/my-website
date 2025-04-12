@@ -357,7 +357,7 @@ nav .container {
     padding: var(--spacing-xs);
 }
 
-/* 首页大图 */
+/* 统一Hero区域样式 */
 .hero {
     min-height: calc(100vh - var(--header-height));
     display: flex;
@@ -384,11 +384,16 @@ nav .container {
     animation: moveBackground 20s linear infinite;
 }
 
-.hero h1 {
+.hero-title {
     font-size: clamp(2rem, 5vw, 4rem);
     margin-bottom: var(--spacing-sm);
-    animation: fadeInDown 1s ease-out, pulse 2s infinite 1.5s;
+    animation: fadeInDown 1s ease-out;
+}
+
+.hero-content {
     position: relative;
+    z-index: 1;
+    padding: var(--spacing-lg);
 }
 
 .hero p {
@@ -1116,6 +1121,29 @@ footer .container {
     footer .container {
         justify-content: center;
         text-align: center;
+    }
+}
+
+/* 响应式和动画优化 */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+    }
+    
+    .hero p {
+        font-size: clamp(0.9rem, 2vw, 1.1rem);
+    }
+    
+    .nav-links {
+        padding: var(--spacing-sm);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-title,
+    .hero-content,
+    .animate__animated {
+        animation: none !important;
     }
 }
 
