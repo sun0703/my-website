@@ -354,6 +354,7 @@ window.addEventListener('load', () => {
 });
 
 // 优化滚动事件处理
+const backToTopButton = document.getElementById('back-to-top');
 window.addEventListener('scroll', throttle(() => {
     if (backToTopButton) {
         if (window.scrollY > 300) {
@@ -365,7 +366,8 @@ window.addEventListener('scroll', throttle(() => {
 }, 100));
 
 // 优化窗口大小改变事件处理
-window.addEventListener('resize', debounce(() => {
+window.addEventListener('resize', throttle(() => {
+    const navLinks = document.getElementById('nav-links');
     if (window.innerWidth > 768 && navLinks) {
         navLinks.classList.remove('active');
     }

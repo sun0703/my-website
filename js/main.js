@@ -282,3 +282,32 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
+
+// 辅助函数: 节流函数
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// 初始化
+document.addEventListener('DOMContentLoaded', () => {
+    initializeTheme();
+    setupMobileMenu();
+    setupScrollHandlers();
+    setupFormValidation();
+});
+
+// 优化窗口大小改变事件处理
+window.addEventListener('resize', debounce(() => {
+    const navLinks = document.getElementById('nav-links');
+    if (window.innerWidth > 768 && navLinks) {
+        navLinks.classList.remove('active');
+    }
+}, 250));
