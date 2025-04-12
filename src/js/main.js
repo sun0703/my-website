@@ -315,9 +315,116 @@ const pageAnalyzer = {
     }
 };
 
+// 动画优化器
+const animationOptimizer = {
+    init() {
+        this.setupIntersectionObserver();
+        this.setupScrollAnimations();
+    },
+
+    setupIntersectionObserver() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '50px'
+        });
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+    },
+
+    setupScrollAnimations() {
+        const elements = document.querySelectorAll('.animate-slide-left, .animate-slide-right, .animate-slide-up');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    let delay = 0;
+                    if (entry.target.dataset.delay) {
+                        const parsedDelay = parseInt(entry.target.dataset.delay, 10);
+                        delay = isNaN(parsedDelay) ? 0 : parsedDelay;
+                    }
+                    setTimeout(() => {
+                        entry.target.style.visibility = 'visible';
+                        entry.target.style.transform = 'none';
+                        entry.target.style.opacity = '1';
+                    }, delay);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '20px'
+        });
+
+        elements.forEach(el => {
+            el.style.visibility = 'hidden';
+            observer.observe(el);
+        });
+    }
+};
+
 // 初始化主题管理器
 document.addEventListener('DOMContentLoaded', () => {
     themeManager.init();
+    animationOptimizer.init();
+
+    // 定义移除预加载状态的函数
+    function removePreloadClass() {
+        document.body.classList.remove('preload');
+    }
+
+    // 调用移除预加载状态
+    setTimeout(removePreloadClass, 50);
+
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const navLinks = document.getElementById('nav-links');
+
+    if (mobileMenuButton && navLinks) {
+        mobileMenuButton.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileMenuButton.querySelector('i');
+            if (icon) {
+                icon.className = navLinks.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
+            }
+        });
+    }
+
+    // 页面加载完成后确保显示
+    window.addEventListener('load', () => {
+        // 确保body可见
+        document.body.style.visibility = 'visible';
+
+        // 调用移除预加载状态函数
+        removePreloadClass();
+    });
+
+    // 优化滚动事件处理
+    const backToTopButton = document.getElementById('back-to-top');
+    window.addEventListener('scroll', throttle(() => {
+        if (backToTopButton) {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        }
+    }, 100));
+
+    // 优化窗口大小改变事件处理
+    window.addEventListener('resize', debounce(() => {
+        const navLinks = document.getElementById('nav-links');
+        if (window.innerWidth > 768 && navLinks) {
+            navLinks.classList.remove('active');
+        }
+    }, 250));
 });
 
 // 初始化性能监控
@@ -334,6 +441,9 @@ requestOptimizer.init();
 
 // 初始化页面分析器
 pageAnalyzer.init();
+
+// 初始化动画优化器
+// Removed duplicate DOMContentLoaded listener as logic is consolidated above.
 
 // Service Worker注册
 if ('serviceWorker' in navigator) {

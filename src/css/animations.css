@@ -2,7 +2,7 @@
 @keyframes fadeInScale {
     from {
         opacity: 0;
-        transform: scale(0.9);
+        transform: scale(0.95);
     }
     to {
         opacity: 1;
@@ -12,7 +12,7 @@
 
 @keyframes slideInFromBottom {
     from {
-        transform: translateY(20px);
+        transform: translateY(30px);
         opacity: 0;
     }
     to {
@@ -21,29 +21,95 @@
     }
 }
 
+@keyframes slideInFromLeft {
+    from {
+        transform: translateX(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+        transform: translateX(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes rotateIn {
+    from {
+        transform: rotate(-180deg) scale(0.3);
+        opacity: 0;
+    }
+    to {
+        transform: rotate(0) scale(1);
+        opacity: 1;
+    }
+}
+
 /* 性能优化的动画类 */
 .animate-fade-in {
-    animation: fadeInScale 0.3s ease forwards;
+    animation: fadeInScale 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     will-change: transform, opacity;
+    backface-visibility: hidden;
 }
 
 .animate-slide-up {
-    animation: slideInFromBottom 0.4s ease forwards;
+    animation: slideInFromBottom 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     will-change: transform, opacity;
+    backface-visibility: hidden;
 }
+
+.animate-slide-left {
+    animation: slideInFromLeft 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+}
+
+.animate-slide-right {
+    animation: slideInFromRight 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+}
+
+.animate-rotate {
+    animation: rotateIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+}
+
+/* 动画延迟类 */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
 
 /* 移动端性能优化 */
 @media (max-width: 768px) {
     .animate-fade-in,
-    .animate-slide-up {
-        animation-duration: 0.2s;
+    .animate-slide-up,
+    .animate-slide-left,
+    .animate-slide-right,
+    .animate-rotate {
+        animation-duration: 0.3s;
     }
 }
 
 /* 减少动画 */
 @media (prefers-reduced-motion: reduce) {
     .animate-fade-in,
-    .animate-slide-up {
+    .animate-slide-up,
+    .animate-slide-left,
+    .animate-slide-right,
+    .animate-rotate {
         animation: none !important;
         opacity: 1 !important;
         transform: none !important;
