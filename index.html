@@ -1,8 +1,7 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- 添加视口限制，防止用户缩放 -->
     <meta name="description" content="我的个人网站，展示我的技能、项目和联系方式">
     <meta name="keywords" content="个人网站, 作品集, 开发者, 前端, 网页设计">
     <meta name="author" content="ab521.top">
@@ -106,11 +105,11 @@
         <section class="hero">
             <div class="container">
                 <div class="hero-content">
-                    <h1 class="animate__animated animate__fadeInDown">你好，我是<span class="highlight">ab521.top</span></h1>
-                    <p class="hero-subtitle animate__animated animate__fadeIn animate__delay-1s">
+                    <h1 class="animate__animated animate__fadeInDown" style="will-change: transform, opacity;">你好，我是<span class="highlight">ab521.top</span></h1>
+                    <p class="hero-subtitle animate__animated animate__fadeIn animate__delay-1s" style="will-change: opacity;">
                         Web开发者 | UI/UX设计师 | 问题解决者
                     </p>
-                    <div class="hero-buttons animate__animated animate__fadeIn animate__delay-2s">
+                    <div class="hero-buttons animate__animated animate__fadeIn animate__delay-2s" style="will-change: transform, opacity;">
                         <a href="projects.html" class="btn btn-primary">查看我的作品</a>
                         <a href="contact.html" class="btn btn-outline">联系我</a>
                     </div>
@@ -120,8 +119,8 @@
         
         <!-- 关于我部分 -->
         <section class="section">
-    <div class="container">
-        <h2 class="section-title animate__animated animate__slideInUp">关于我</h2>
+            <div class="container">
+                <h2 class="section-title animate__animated animate__slideInUp" style="will-change: transform;">关于我</h2>
                 <div class="about-preview">
                     <div class="about-preview-text">
                         <p>我是一名充满激情的Web开发者，专注于创建高质量、用户友好的应用程序。我热爱技术与分享，不断学习新技术来提升自己的技能。</p>
@@ -137,8 +136,8 @@
         
         <!-- 技能部分 -->
         <section class="section section-alt">
-    <div class="container">
-        <h2 class="section-title animate__animated animate__slideInUp">我的技能</h2>
+            <div class="container">
+                <h2 class="section-title animate__animated animate__slideInUp" style="will-change: transform;">我的技能</h2>
                 <div class="skills-preview">
                     <div class="skill-category">
                         <h3>前端开发</h3>
@@ -179,8 +178,8 @@
         
         <!-- 项目部分 -->
         <section class="section">
-    <div class="container">
-        <h2 class="section-title animate__animated animate__slideInUp">精选项目</h2>
+            <div class="container">
+                <h2 class="section-title animate__animated animate__slideInUp" style="will-change: transform;">精选项目</h2>
                 <div class="projects-preview">
                     <div class="project-card">
                         <div class="project-image">
@@ -277,39 +276,51 @@
     <!-- JavaScript -->
     <script src="./js/main.js"></script>
 </body>
+</```
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="My personal website">
+  <title>My Website</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Welcome to My Website</h1>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="about">
+      <h2>About Me</h2>
+      <p>This section contains information about me.</p>
+    </section>
+
+    <section id="services">
+      <h2>Services</h2>
+      <p>This section describes the services I offer.</p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>You can reach me via email or phone.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 My Website. All rights reserved.</p>
+  </footer>
+
+  <script src="scripts.js"></script>
+</body>
 </html>
-
-/* 手机端适配优化 */
-@media (max-width: 768px) {
-    .hero-content h1 {
-        font-size: 1.8rem;
-    }
-    .hero-content p {
-        font-size: 1rem;
-    }
-    .projects-preview {
-        grid-template-columns: 1fr;
-    }
-    .project-card {
-        padding: 1rem;
-    }
-    .project-details h3 {
-        font-size: 1.2rem;
-    }
-    .project-details p {
-        font-size: 0.9rem;
-    }
-}
-
-/* 动画优化 */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation: none !important;
-        transition: none !important;
-    }
-}
-
-/* 懒加载优化 */
-.project-card img {
-    loading: lazy;
-}
