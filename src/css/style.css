@@ -135,9 +135,11 @@ button:focus,
     box-sizing: border-box;
 }
 
+/* 优化滚动性能 */
 html {
     font-size: var(--font-size-base);
     scroll-behavior: smooth;
+    scroll-padding-top: var(--header-height);
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -166,10 +168,13 @@ body {
     flex-direction: column;
 }
 
+/* 优化图片加载 */
 img {
     max-width: 100%;
     height: auto;
     display: block;
+    content-visibility: auto;
+    contain: content;
 }
 
 /* 返回顶部按钮 */
@@ -318,6 +323,7 @@ nav .container {
     transition: color var(--transition-speed);
     position: relative;
     padding: var(--spacing-xs) 0;
+    will-change: transform, opacity;
 }
 
 .nav-links a::after {
@@ -543,6 +549,7 @@ nav .container {
     box-shadow: var(--shadow);
     transition: transform var(--transition-speed) var(--transition-timing),
                 box-shadow var(--transition-speed) var(--transition-timing);
+    will-change: transform, opacity;
 }
 
 .project-card {
@@ -1024,6 +1031,20 @@ footer .container {
     color: white;
 }
 
+/* 性能优化 */
+/* 使用will-change提示浏览器需要优化的属性 */
+.nav-links a,
+.hero-content,
+.project-card {
+    will-change: transform, opacity;
+}
+
+/* 优化动画性能 */
+.animate__animated {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+}
+
 /* 移动端适配 */
 @media (max-width: 768px) {
     .about-content,
@@ -1068,10 +1089,12 @@ footer .container {
         padding: var(--spacing-sm);
         text-align: center;
         box-shadow: var(--shadow);
+        transform: translateY(-100%);
+        will-change: transform;
     }
 
     .nav-links.active {
-        display: flex;
+        transform: translateY(0);
     }
 
     .nav-links a::after {
